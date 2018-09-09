@@ -41,7 +41,8 @@ class Main extends egret.DisplayObjectContainer {
             egret.localStorage.setItem('openId', res)
         });
 
-        await platform.getUserInfo();
+        // await platform.getUserInfo();
+            // console.log(userinfo)
         // const result = await RES.getResAsync("description_json")
         await platform.showShareMenu()
     }
