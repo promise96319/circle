@@ -3,6 +3,9 @@ class Main extends egret.DisplayObjectContainer {
     public constructor() {
         super();
         this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
+        platform.openDataContext.postMessage({
+            command: 'loadRes'
+        })
     }
 
     private onAddToStage(event: egret.Event) {
@@ -34,11 +37,13 @@ class Main extends egret.DisplayObjectContainer {
     private async runGame() {
         await this.loadResource()
         this.createGameScene();
-        const result = await RES.getResAsync("description_json")
-        await platform.login();
-        const userInfo = await platform.getUserInfo();
-        console.log(userInfo);
+        await platform.login().then((res) => {
+            egret.localStorage.setItem('openId', res)
+        });
 
+        await platform.getUserInfo();
+        // const result = await RES.getResAsync("description_json")
+        await platform.showShareMenu()
     }
 
     private async loadResource() {
@@ -63,18 +68,8 @@ class Main extends egret.DisplayObjectContainer {
   
 
     private createGameScene() {
-        this.addChild(new Begin(this.stage.stageWidth, this.stage.stageHeight))
+        this.addChild(new Begin(this.stage.stageWidth, this.stage.stageHeight, false))
+        
+        // this.addChild(new Game(this.stage.stageWidth, this.stage.stageHeight))
     }
-
-
-
-
-
-
-
-
-
-
-
-
 }

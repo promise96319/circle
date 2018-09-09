@@ -10,15 +10,34 @@ declare interface Platform {
 
     login(): Promise<any>
 
+    // TODO: 编译时将原来的给覆盖了
+    showShareMenu(): Promise<any>
+
+    shareAppMessage(): Promise<any>
+
+    setUserCloudStorage(score:any): Promise<any>
+
+    openDataContext
 }
 
 class DebugPlatform implements Platform {
     async getUserInfo() {
-        return { nickName: "username" }
+        // return { nickName: "username" }
     }
     async login() {
 
     }
+    async showShareMenu () {
+
+    }
+    async shareAppMessage () {
+
+    }
+    async setUserCloudStorage(score:any) {
+
+    }
+
+    openDataContext
 }
 
 
@@ -26,12 +45,9 @@ if (!window.platform) {
     window.platform = new DebugPlatform();
 }
 
-
-
 declare let platform: Platform;
 
 declare interface Window {
-
     platform: Platform
 }
 
