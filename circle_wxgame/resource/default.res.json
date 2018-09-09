@@ -1,0 +1,30 @@
+{
+	"groups": [
+		{
+			"name": "preload",
+			"keys": "logo_jpg,close_png,fail_bgc_png,share_png"
+		}
+	],
+	"resources": [
+		{
+			"name": "logo_jpg",
+			"type": "image",
+			"url": "assets/logo.jpg"
+		},
+		{
+			"name": "close_png",
+			"type": "image",
+			"url": "assets/close.png"
+		},
+		{
+			"name": "fail_bgc_png",
+			"type": "image",
+			"url": "assets/fail_bgc.png"
+		},
+		{
+			"name": "share_png",
+			"type": "image",
+			"url": "assets/share.png"
+		}
+	]
+}
